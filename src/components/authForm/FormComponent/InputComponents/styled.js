@@ -101,11 +101,18 @@ const InputErrorStyled = styled.span`
   color: #F43015;
 `;
 
+const PasswordEyeIconStyledWrapper = styled.div`
+  position: absolute;
+  bottom: -2px;
+  right: 35px;
+`;
+
 export {
   InputWrapperStyled,
   InputStyled,
   TitleFormStyled,
   InputSelectStyled,
   InputOptionStyled,
-  InputErrorStyled
+  InputErrorStyled,
+  PasswordEyeIconStyledWrapper
 }

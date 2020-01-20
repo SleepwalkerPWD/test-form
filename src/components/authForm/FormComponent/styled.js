@@ -8,6 +8,7 @@ import GoogleIcon from '../../icons/GoogleIcon';
 import DoneIcon from '../../icons/DoneIcon';
 import ErrorIcon from '../../icons/ErrorIcon';
 import EyeClosedIcon from '../../icons/EyeClosedIcon';
+import DoneGrayIcon from '../../icons/DoneGrayIcon';
 
 const FormBackgroundWrapper = styled.div`
   display: flex;
@@ -52,21 +53,21 @@ const DownIconStyled = styled(DownIcon)`
 const EyeIconStyled = styled(EyeIcon)`
   position: absolute;
   right: 15px;
-  bottom: 18px;
+  bottom: 19px;
   cursor: pointer;
 `;
 
 const EyeClosedIconStyled = styled(EyeClosedIcon)`
   position: absolute;
   right: 15px;
-  bottom: 18px;
+  bottom: 17px;
   cursor: pointer;
 `;
 
 const DoneIconStyled = styled(DoneIcon)`
   position: absolute;
   right: 15px;
-  bottom: 18px;
+  bottom: 17px;
   cursor: pointer;
 `;
 
@@ -75,6 +76,12 @@ const ErrorIconStyled = styled(ErrorIcon)`
   right: 15px;
   bottom: 15px;
   cursor: pointer;
+`;
+
+const DoneGrayIconStyled = styled(DoneGrayIcon)`
+  position: absolute;
+  right: 15px;
+  bottom: 17px;
 `;
 
 const PasswordRulesListStyled = styled.ul`
@@ -201,6 +208,7 @@ export {
   EyeClosedIconStyled,
   DoneIconStyled,
   ErrorIconStyled,
+  DoneGrayIconStyled,
   PasswordRulesListStyled,
   PasswordRulesListItemStyled,
   FormButtonStyled,

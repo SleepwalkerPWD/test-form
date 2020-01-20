@@ -6,7 +6,8 @@ import {
   EyeIconStyled,  
   EyeClosedIconStyled,
   DoneIconStyled,
-  ErrorIconStyled
+  ErrorIconStyled,
+  DoneGrayIconStyled
 } from '../FormComponent/styled';
 
 const UserInput = {
@@ -52,6 +53,7 @@ const EyeInput = {
   success: DoneIconStyled,
   error: ErrorIconStyled,
   eyeOpen: EyeIconStyled,
+  doneGray: DoneGrayIconStyled,
   text: 'Create password',
   type: 'password',
   titleFor: 'password',

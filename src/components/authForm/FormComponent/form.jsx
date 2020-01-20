@@ -5,7 +5,7 @@ import validateForm from '../utils/validateForm';
 import getKey from '../utils/getKey';
 import getValue from '../utils/getValue';
 
-import InputComponent from './inputComponent';
+import InputComponents from './InputComponents';
 
 import { 
   INPUT_PROPS,
@@ -94,16 +94,17 @@ const Form = () => {
       <FormWrapper>
         <FormValue onSubmit={handleSubmit}>
           {INPUT_PROPS.map(input => (
-            <InputComponent
+            <InputComponents
               key={input.id}
               title={input.title}
               icon={input.icon}
               successIcon={input.success}
               errorIcon={input.error}
               eyeOpenIcon={input.eyeOpen}
+              doneGray={input.doneGray}
               text={input.text}
               type={input.type}
-              for={input.for}
+              titleFor={input.titleFor}
               name={input.name}
               handleUserInput={handleUserInput}
               values={values}
