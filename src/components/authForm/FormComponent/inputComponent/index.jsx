@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { COUNTRY_ARR } from '../../constants';
+
 import {
   InputWrapperStyled,
   InputStyled,
@@ -15,7 +17,7 @@ const InputComponent = ({
   icon: Icon,
   successIcon: SuccessIcon,
   errorIcon: ErrorIcon,
-  eyeClosedIcon: EyeClosedIcon,
+  eyeOpenIcon: EyeOpenIcon,
   text,
   type,
   titleFor,
@@ -38,11 +40,14 @@ const InputComponent = ({
             size='1'
           >
             <InputOptionStyled value="" hidden disabled selected>{text}</InputOptionStyled>
-            <InputOptionStyled value="Russia">Russia</InputOptionStyled>
-            <InputOptionStyled value="Germany">Germany</InputOptionStyled>
-            <InputOptionStyled value="Italy">Italy</InputOptionStyled>
-            <InputOptionStyled value="USA">USA</InputOptionStyled>
-            <InputOptionStyled value="France">France</InputOptionStyled>
+            {COUNTRY_ARR.map((country, index) => (
+                <InputOptionStyled 
+                  key={index}
+                  value={country}
+                >
+                  {country}
+                </InputOptionStyled>
+            ))}
           </InputSelectStyled>
           {values.errorCount > 0 && (
             <InputErrorStyled className='error'>{values.errors.country}</InputErrorStyled>
@@ -70,6 +75,9 @@ const InputComponent = ({
               )
             )
           }
+          {/* {name === 'password' && 
+            <EyeOpenIcon />
+          } */}
           {name === objectErrorKey && values.errorCount > 0 && (
             <InputErrorStyled>
               {objectErrorValue}
@@ -95,7 +103,7 @@ const InputComponent = ({
 InputComponent.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.object,
-  eyeClosedIcon: PropTypes.object,
+  eyeOpenIcon: PropTypes.object,
   successIcon: PropTypes.object,
   errorIcon: PropTypes.object,
   text: PropTypes.string,

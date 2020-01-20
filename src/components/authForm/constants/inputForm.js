@@ -48,10 +48,10 @@ const DownInput = {
 const EyeInput = {
   id: 4,
   title: 'Password',
-  icon: EyeIconStyled,
+  icon: EyeClosedIconStyled,
   success: DoneIconStyled,
   error: ErrorIconStyled,
-  eyeClosed: EyeClosedIconStyled,
+  eyeOpen: EyeIconStyled,
   text: 'Create password',
   type: 'password',
   titleFor: 'password',

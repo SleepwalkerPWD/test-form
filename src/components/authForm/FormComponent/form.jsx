@@ -100,7 +100,7 @@ const Form = () => {
               icon={input.icon}
               successIcon={input.success}
               errorIcon={input.error}
-              eyeClosedIcon={input.eyeClosed}
+              eyeOpenIcon={input.eyeOpen}
               text={input.text}
               type={input.type}
               for={input.for}
