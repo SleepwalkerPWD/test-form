@@ -5,23 +5,25 @@
     "jest": true
   },
   "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "plugins": [
-      "react"
+    "react"
   ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
-      "comma-dangle": 0
+    "comma-dangle": 0,
+    "no-useless-escape": 2
   },
   "settings": {
-      "react": {
-          "pragma": "React",
-          "version": "15.4.2"
-      }
-  }
+    "react": {
+      "pragma": "React",
+      "version": "15.4.2"
+    }
+  },
+  "parser": "babel-eslint",
 }
