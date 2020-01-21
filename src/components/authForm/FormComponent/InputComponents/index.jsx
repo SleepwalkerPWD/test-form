@@ -1,20 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { COUNTRY_ARR } from '../../constants';
-
 import PasswordInput from './passwordInput';
+import SelectCountryInput from './selectCountryInput';
+import UserNameEmailInput from './userNameEmailInput';
 
 import {
   InputWrapperStyled,
-  InputStyled,
-  TitleFormStyled,
-  InputSelectStyled,
-  InputOptionStyled,
   InputErrorStyled
 } from './styled';
 
 const InputComponents = ({
+  values,
   title,
   icon: Icon,
   successIcon: SuccessIcon,
@@ -26,96 +23,102 @@ const InputComponents = ({
   titleFor,
   handleUserInput,
   name,
-  values,
-  objectErrorKey,
-  objectErrorValue
+  errorMessage,
+  handleChangePass,
+  passErrorObj
 }) => {
   return (
     <>
-      {title === 'Country' ? (
+      {title === 'Name' && (
         <InputWrapperStyled>
-          <TitleFormStyled>{title}</TitleFormStyled>
-          <InputSelectStyled 
-            success={!values.errors.country}
-            error={objectErrorValue !== ' '}
-            onClick={handleUserInput}
-            name={name} 
-            size='1'
-          >
-            <InputOptionStyled value="" hidden disabled selected>{text}</InputOptionStyled>
-            {COUNTRY_ARR.map((country, index) => (
-                <InputOptionStyled 
-                  key={index}
-                  value={country}
-                >
-                  {country}
-                </InputOptionStyled>
-            ))}
-          </InputSelectStyled>
+          <UserNameEmailInput 
+            title={title}
+            icon={Icon}
+            successIcon={SuccessIcon}
+            errorIcon={ErrorIcon}
+            eyeOpenIcon={EyeOpenIcon}
+            text={text}
+            type={type}
+            titleFor={titleFor}
+            name={name}
+            handleUserInput={handleUserInput}
+            errorMessage={errorMessage}
+          />
+        {values.errorCount > 0 && (
+          <InputErrorStyled>
+            {errorMessage}
+          </InputErrorStyled>
+        )}
+        </InputWrapperStyled>
+      )}
+      {title === 'Email' && (
+        <InputWrapperStyled>
+          <UserNameEmailInput 
+            title={title}
+            icon={Icon}
+            successIcon={SuccessIcon}
+            errorIcon={ErrorIcon}
+            eyeOpenIcon={EyeOpenIcon}
+            text={text}
+            type={type}
+            titleFor={titleFor}
+            name={name}
+            handleUserInput={handleUserInput}
+            errorMessage={errorMessage}
+          />
+        {values.errorCount > 0 && (
+          <InputErrorStyled>
+            {errorMessage}
+          </InputErrorStyled>
+        )}
+        </InputWrapperStyled>
+      )}
+      {title === 'Country' && (
+        <InputWrapperStyled>
+          <SelectCountryInput 
+            title={title}
+            text={text}
+            titleFor={titleFor}
+            name={name}
+            handleUserInput={handleUserInput}
+            errorMessage={errorMessage}
+          />
           {values.errorCount > 0 && (
-            <InputErrorStyled className='error'>{values.errors.country}</InputErrorStyled>
+            <InputErrorStyled >
+              {errorMessage}
+            </InputErrorStyled>
           )}
         </InputWrapperStyled>
-      ) : (
-          (title !== 'Password' ? (
-            <InputWrapperStyled>
-              <TitleFormStyled htmlFor={titleFor}>{title}</TitleFormStyled>
-              <InputStyled 
-                type={type}
-                placeholder={text}
-                onChange={handleUserInput}
-                name={name}
-                success={!objectErrorValue}
-                error={objectErrorValue !== ' '}
-              />
-              {!objectErrorValue ? (
-                  <SuccessIcon /> 
-                ):(
-                  (objectErrorValue !== ' ' ? (
-                      <ErrorIcon />
-                    ) : (
-                      <Icon />
-                    )
-                  )
-                )
-              }
-            {name === objectErrorKey && values.errorCount > 0 && (
-              <InputErrorStyled>
-                {objectErrorValue}
-              </InputErrorStyled>
-            )}
-              </InputWrapperStyled>
-            ):(
-              <InputWrapperStyled>
-                <PasswordInput 
-                  title={title}
-                  icon={Icon}
-                  successIcon={SuccessIcon}
-                  errorIcon={ErrorIcon}
-                  eyeOpenIcon={EyeOpenIcon}
-                  doneGrayIcon={DoneGrayIcon}
-                  text={text}
-                  type={type}
-                  titleFor={titleFor}
-                  name={name}
-                  handleUserInput={handleUserInput}
-                  objectErrorValue={objectErrorValue}
-                />
-              {values.errorCount > 0 && (
-                <InputErrorStyled>
-                  {objectErrorValue}
-                </InputErrorStyled>
-              )}
-              </InputWrapperStyled>
-            )
-          )
-        )
-      }  
+      )} 
+      {title === 'Password' && (
+        <InputWrapperStyled>
+          <PasswordInput 
+            title={title}
+            icon={Icon}
+            successIcon={SuccessIcon}
+            errorIcon={ErrorIcon}
+            eyeOpenIcon={EyeOpenIcon}
+            doneGrayIcon={DoneGrayIcon}
+            text={text}
+            type={type}
+            titleFor={titleFor}
+            name={name}
+            handleUserInput={handleUserInput}
+            errorMessage={errorMessage}
+            handleChangePass={handleChangePass}
+            passErrors={values.errorCountPassword}
+            passErrorObj={passErrorObj}
+          />
+        {values.errorCount > 0 && (
+          <InputErrorStyled>
+            {errorMessage}
+          </InputErrorStyled>
+        )}
+        </InputWrapperStyled>
+      )}
     </>
   )
-}
-
-          
+}          
 
 InputComponents.propTypes = {
   title: PropTypes.string,
@@ -131,7 +134,9 @@ InputComponents.propTypes = {
   name: PropTypes.string,
   values: PropTypes.object,
   objectErrorKey: PropTypes.string,
-  objectErrorValue: PropTypes.string
+  errorMessage: PropTypes.string,
+  handleChangePass: PropTypes.func,
+  passErrorObj: PropTypes.object
 };
 
 export default InputComponents;

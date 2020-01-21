@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import UserIcon from '../../icons/UserIcon';
 import MailIcon from '../../icons/MailIcon';
@@ -9,6 +9,10 @@ import DoneIcon from '../../icons/DoneIcon';
 import ErrorIcon from '../../icons/ErrorIcon';
 import EyeClosedIcon from '../../icons/EyeClosedIcon';
 import DoneGrayIcon from '../../icons/DoneGrayIcon';
+
+const complexMixinError = css`
+  color: ${prop => (prop.success ? '#F43015' : '#809398')};
+`
 
 const FormBackgroundWrapper = styled.div`
   display: flex;
@@ -103,7 +107,7 @@ const PasswordRulesListStyled = styled.ul`
 `;
 
 const PasswordRulesListItemStyled = styled.li`
-  color: #809398;
+  ${prop => (prop.error ? 'color: #0AD65C' : complexMixinError)};
   margin-top: 12px;
   font-weight: 600;
   font-size: 15px;

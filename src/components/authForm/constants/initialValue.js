@@ -2,10 +2,10 @@
 const INITIAL_VALUES = {
   formValid: false,
   errorCount: null,
+  errorCountPassword: ' ',
   errors: {
     userName: ' ',
     email: ' ',
-    password: ' ',
     country: ' '
   },
 };

@@ -10,7 +10,7 @@ import {
   DoneGrayIconStyled
 } from '../FormComponent/styled';
 
-const UserInput = {
+const UserNameInput = {
   id: 1,
   title: 'Name',
   icon: UserIconStyled,
@@ -22,7 +22,7 @@ const UserInput = {
   name: 'userName',
 };
 
-const MailInput = {
+const EmailInput = {
   id: 2,
   title: 'Email',
   icon: MailIconStyled,
@@ -34,7 +34,7 @@ const MailInput = {
   name: 'email'
 };
 
-const DownInput = {
+const SelectInput = {
   id: 3,
   title: 'Country',
   icon: DownIconStyled,
@@ -46,7 +46,7 @@ const DownInput = {
   name: 'country'
 };
 
-const EyeInput = {
+const PasswordInput = {
   id: 4,
   title: 'Password',
   icon: EyeClosedIconStyled,
@@ -61,10 +61,10 @@ const EyeInput = {
 };
 
 const INPUT_PROPS = [
-  UserInput,
-  MailInput,
-  DownInput,
-  EyeInput
+  UserNameInput,
+  EmailInput,
+  SelectInput,
+  PasswordInput
 ]
 
 export {

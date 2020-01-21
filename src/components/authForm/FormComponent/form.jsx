@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { isEmpty } from 'lodash';
 
 import countErrors from '../utils/countErrors';
 import validateForm from '../utils/validateForm';
-import getKey from '../utils/getKey';
-import getValue from '../utils/getValue';
+import getErrorMessage from '../utils/getErrorMessage';
+import validPassword from '../utils/validPassword';
 
 import InputComponents from './InputComponents';
+import usePasswordForm from '../../Hooks/usePasswordForm';
 
 import { 
   INPUT_PROPS,
-  LIST_ITEMS,
   INITIAL_VALUES,
   VALID_EMAIL_REGEXP
  } from '../constants';
@@ -33,7 +34,12 @@ import {
 
 const Form = () => {
   const [values, setValues] = useState(INITIAL_VALUES);
-  
+
+  const {
+    passErrors,
+    handleChangePass
+  } = usePasswordForm(validPassword);
+
   const handleUserInput = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -58,12 +64,6 @@ const Form = () => {
             ? ''
             : 'Не верно указан email';
         break;
-      case 'password': 
-        errors.password = 
-          value.length < 8
-            ? 'Пароль должен быть больше 8 символов'
-            : ''
-        break;
       default:
         break;
     }
@@ -73,12 +73,14 @@ const Form = () => {
       formValid: validateForm(values.errors),
       errors,
       errorCount: countErrors(values.errors),
+      errorCountPassword: countErrors(passErrors.password),
       [name]: value
     });
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log('Form Valid!!!!!')
 
     setValues({
       ...values,
@@ -89,12 +91,22 @@ const Form = () => {
       errorCount: countErrors(values.errors)
     });
   }
+
+  useEffect(() => {
+    setValues({
+      ...values,
+      errorCount: countErrors(values.errors),
+      errorCountPassword: countErrors(passErrors.password),
+    });
+  }, [passErrors.password])
+  console.log(passErrors.password.lowercase)
   return (
     <FormBackgroundWrapper>
       <FormWrapper>
         <FormValue onSubmit={handleSubmit}>
           {INPUT_PROPS.map(input => (
             <InputComponents
+              values={values}
               key={input.id}
               title={input.title}
               icon={input.icon}
@@ -107,21 +119,29 @@ const Form = () => {
               titleFor={input.titleFor}
               name={input.name}
               handleUserInput={handleUserInput}
-              values={values}
-              objectErrorKey={getKey(values, input.name)}
-              objectErrorValue={getValue(values.errors, input.name)}
+              errorMessage={getErrorMessage(values.errors, input.name)}
+              handleChangePass={handleChangePass}
+              passErrorObj={passErrors.password}
             />
           ))}
           <PasswordRulesListStyled>
-            {LIST_ITEMS.map((list, index) => (
-              <PasswordRulesListItemStyled key={index}>
-                {list}
-              </PasswordRulesListItemStyled>
-            ))}
+            <PasswordRulesListItemStyled success={passErrors.password.lowercase}>
+              One lowercase character
+            </PasswordRulesListItemStyled>
+            <PasswordRulesListItemStyled success={passErrors.password.number}>
+              One number
+            </PasswordRulesListItemStyled>
+            <PasswordRulesListItemStyled success={passErrors.password.uppercase}>
+              One Uppercase character
+            </PasswordRulesListItemStyled>
+            <PasswordRulesListItemStyled success={passErrors.password.eight}>
+              At least 8 symbols
+            </PasswordRulesListItemStyled>
           </PasswordRulesListStyled>
           <FormButtonStyled 
             type='submit'
-            valid={values.formValid}
+            valid={values.formValid && !values.errorCountPassword}
+            disabled={!values.formValid}
           >
             Create Account
           </FormButtonStyled>
