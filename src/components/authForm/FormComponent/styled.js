@@ -10,9 +10,17 @@ import ErrorIcon from '../../icons/ErrorIcon';
 import EyeClosedIcon from '../../icons/EyeClosedIcon';
 import DoneGrayIcon from '../../icons/DoneGrayIcon';
 
+import CircleIcon from '../../images/icons/PasswordValidation/CircleIcon.svg';
+import CheckIcon from '../../images/icons/PasswordValidation/CheckIcon.svg';
+import FailIcon from '../../images/icons/PasswordValidation/FailIcon.svg';
+
 const complexMixinError = css`
   color: ${prop => (prop.error ? '#809398' : '#0AD65C')};
-`
+`;
+
+const complexMixinErrorIcon = css`
+  content: ${prop => (prop.error ? `url(${CircleIcon})` : `url(${CheckIcon})`)}
+`;
 
 const FormBackgroundWrapper = styled.div`
   display: flex;
@@ -107,11 +115,21 @@ const PasswordRulesListStyled = styled.ul`
 `;
 
 const PasswordRulesListItemStyled = styled.li`
+  position: relative;
   ${prop => (prop.success ? 'color: #F43015' : complexMixinError)};
   margin-top: 12px;
   font-weight: 600;
   font-size: 14px;
   line-height: 120%;
+  list-style-type: none;
+
+  &::before {
+    ${prop => (prop.success ? `content: url(${FailIcon})` : complexMixinErrorIcon)};
+    position: absolute;
+    bottom: 10px;
+    left: -15px;
+    height: 0.5em;
+  }
 `;
 
 const FormButtonStyled = styled.button`

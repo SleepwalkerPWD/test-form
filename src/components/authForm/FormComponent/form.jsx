@@ -99,7 +99,7 @@ const Form = () => {
       errorCountPassword: countErrors(passErrors.password),
     });
   }, [passErrors.password])
-  console.log(passErrors.password.lowercase === "")
+
   return (
     <FormBackgroundWrapper>
       <FormWrapper>
