@@ -49,20 +49,20 @@ const Form = () => {
       case 'userName': 
         errors.userName = 
           value.length < 5
-            ? 'Имя должно быть больше 5 символов'
+            ? 'Name at least 5 symbols'
             : '';
         break;
       case 'country':
         errors.country = 
           !value.length
-            ? 'Выберите страну'
+            ? 'Choose country'
             : '';
         break;
       case 'email': 
         errors.email = 
         VALID_EMAIL_REGEXP.test(value)
             ? ''
-            : 'Не верно указан email';
+            : 'Invalid email';
         break;
       default:
         break;
