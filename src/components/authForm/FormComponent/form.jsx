@@ -140,7 +140,7 @@ const Form = () => {
           </PasswordRulesListStyled>
           <FormButtonStyled 
             type='submit'
-            valid={values.formValid && !values.errorCountPassword}
+            valid={values.formValid && isEmpty(passErrors.password)}
             disabled={!values.formValid}
           >
             Create Account
