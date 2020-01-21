@@ -11,7 +11,7 @@ import EyeClosedIcon from '../../icons/EyeClosedIcon';
 import DoneGrayIcon from '../../icons/DoneGrayIcon';
 
 const complexMixinError = css`
-  color: ${prop => (prop.success ? '#F43015' : '#809398')};
+  color: ${prop => (prop.error ? '#809398' : '#0AD65C')};
 `
 
 const FormBackgroundWrapper = styled.div`
@@ -97,20 +97,20 @@ const PasswordRulesListStyled = styled.ul`
   padding: 0;
   margin: 0;
   margin-left: 18px;
-  margin-right: 63px;
+  margin-right: 80px;
   margin-top: 15px;
   padding: 0;
 
   li:nth-child(2) {
-    margin-right: 38px;
+    margin-right: 35px;
   }
 `;
 
 const PasswordRulesListItemStyled = styled.li`
-  ${prop => (prop.error ? 'color: #0AD65C' : complexMixinError)};
+  ${prop => (prop.success ? 'color: #F43015' : complexMixinError)};
   margin-top: 12px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 120%;
 `;
 

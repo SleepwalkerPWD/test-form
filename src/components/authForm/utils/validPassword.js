@@ -13,16 +13,16 @@ const validPassword = (value) => {
   // }
   
   if (!passwordNumberRegex.test(value)) {
-    errors.password.number = "Пароль должен содержать одну цифру";
+    errors.password.number = "One number";
   } 
   if (!passwordUpperCaseLetters.test(value)) {
-    errors.password.uppercase = "Пароль должен содержать одну большую букву";
+    errors.password.uppercase = "One Uppercase character";
   } 
   if (!passwordLowerCaseLetters.test(value)) {
-    errors.password.lowercase = "Пароль должен содержать одну маленькую букву";
+    errors.password.lowercase = "One lowercase character";
   } 
   if (value.length < 8) {
-    errors.password.eight = "Пароль должен быть больше 8 символов";
+    errors.password.eight = "At least 8 symbols";
   } 
 
   return errors;

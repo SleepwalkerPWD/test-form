@@ -99,7 +99,7 @@ const Form = () => {
       errorCountPassword: countErrors(passErrors.password),
     });
   }, [passErrors.password])
-  console.log(passErrors.password.lowercase)
+  console.log(passErrors.password.lowercase === "")
   return (
     <FormBackgroundWrapper>
       <FormWrapper>
@@ -125,16 +125,28 @@ const Form = () => {
             />
           ))}
           <PasswordRulesListStyled>
-            <PasswordRulesListItemStyled success={passErrors.password.lowercase}>
+            <PasswordRulesListItemStyled 
+              success={passErrors.password.lowercase}
+              error={passErrors.password.lowercase === ''}
+            >
               One lowercase character
             </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled success={passErrors.password.number}>
+            <PasswordRulesListItemStyled 
+              success={passErrors.password.number}
+              error={passErrors.password.number === ''}
+            >
               One number
             </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled success={passErrors.password.uppercase}>
+            <PasswordRulesListItemStyled 
+              success={passErrors.password.uppercase} 
+              error={passErrors.password.uppercase === ''}
+            >
               One Uppercase character
             </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled success={passErrors.password.eight}>
+            <PasswordRulesListItemStyled 
+              success={passErrors.password.eight}
+              error={passErrors.password.eight === ''}
+            >
               At least 8 symbols
             </PasswordRulesListItemStyled>
           </PasswordRulesListStyled>
