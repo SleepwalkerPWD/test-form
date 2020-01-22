@@ -5,12 +5,6 @@ const validPassword = (value) => {
   const passwordNumberRegex = /[0-9]/g;
   const passwordUpperCaseLetters = /[A-Z]/g;
   const passwordLowerCaseLetters = /[a-z]/g;
-
-  // if (!value) {
-  //   errors.password.empty = "Пароль не должен быть пустым" ;
-  // } else {
-  //   errors.password.empty = '';
-  // }
   
   if (!passwordNumberRegex.test(value)) {
     errors.password.number = "One number";
