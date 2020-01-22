@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import DownIcon from '../../../images/icons/DownIcon.svg';
-import DoneIcon from '../../../images/icons/DoneIcon.svg';
-import ErrorIcon from '../../../images/icons/ErrorIcon.svg';
+import DownIcon from '../../../../images/icons/DownIcon.svg';
+import DoneIcon from '../../../../images/icons/DoneIcon.svg';
+import ErrorIcon from '../../../../images/icons/ErrorIcon.svg';
 
 const complexMixinError = css`
   border: ${prop => (prop.error ? '1px solid #F43015' : '1px solid #EBEEEE')};

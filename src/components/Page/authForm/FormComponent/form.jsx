@@ -7,7 +7,7 @@ import getErrorMessage from '../utils/getErrorMessage';
 import validPassword from '../utils/validPassword';
 
 import InputComponents from './InputComponents';
-import usePasswordForm from '../../Hooks/usePasswordForm';
+import usePasswordForm from '../../../Hooks/usePasswordForm';
 
 import { 
   INPUT_PROPS,

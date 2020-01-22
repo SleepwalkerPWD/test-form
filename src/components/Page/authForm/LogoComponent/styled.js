@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImage from '../../images/signUp.svg';
+import backgroundImage from '../../../images/signUp.svg';
 
 const LogoBackgroundWrapper = styled.div`
   display: flex;

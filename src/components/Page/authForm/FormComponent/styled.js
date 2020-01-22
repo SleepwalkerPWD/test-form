@@ -1,18 +1,18 @@
 import styled, { css } from 'styled-components';
 
-import UserIcon from '../../icons/UserIcon';
-import MailIcon from '../../icons/MailIcon';
-import DownIcon from '../../icons/DownIcon';
-import EyeIcon from '../../icons/EyeIcon';
-import GoogleIcon from '../../icons/GoogleIcon';
-import DoneIcon from '../../icons/DoneIcon';
-import ErrorIcon from '../../icons/ErrorIcon';
-import EyeClosedIcon from '../../icons/EyeClosedIcon';
-import DoneGrayIcon from '../../icons/DoneGrayIcon';
+import UserIcon from '../../../icons/UserIcon';
+import MailIcon from '../../../icons/MailIcon';
+import DownIcon from '../../../icons/DownIcon';
+import EyeIcon from '../../../icons/EyeIcon';
+import GoogleIcon from '../../../icons/GoogleIcon';
+import DoneIcon from '../../../icons/DoneIcon';
+import ErrorIcon from '../../../icons/ErrorIcon';
+import EyeClosedIcon from '../../../icons/EyeClosedIcon';
+import DoneGrayIcon from '../../../icons/DoneGrayIcon';
 
-import CircleIcon from '../../images/icons/PasswordValidation/CircleIcon.svg';
-import CheckIcon from '../../images/icons/PasswordValidation/CheckIcon.svg';
-import FailIcon from '../../images/icons/PasswordValidation/FailIcon.svg';
+import CircleIcon from '../../../images/icons/PasswordValidation/CircleIcon.svg';
+import CheckIcon from '../../../images/icons/PasswordValidation/CheckIcon.svg';
+import FailIcon from '../../../images/icons/PasswordValidation/FailIcon.svg';
 
 const complexMixinError = css`
   color: ${prop => (prop.error ? '#809398' : '#0AD65C')};

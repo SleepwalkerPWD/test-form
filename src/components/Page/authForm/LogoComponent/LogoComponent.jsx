@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import LogoIcon from "../../icons/LogoIcon";
+import LogoIcon from "../../../icons/LogoIcon";
 
 import { 
   BackgroundStyled,

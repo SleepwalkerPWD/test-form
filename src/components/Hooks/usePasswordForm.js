@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { INITIAL_PASS_ERRORS } from '../authForm/constants/inititalPassErrors';
+import { INITIAL_PASS_ERRORS } from '../Page/authForm/constants/inititalPassErrors';
 
 const usePasswordForm = (validate) => {
 
