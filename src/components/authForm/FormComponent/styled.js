@@ -106,7 +106,6 @@ const PasswordRulesListStyled = styled.ul`
   margin: 0;
   margin-left: 18px;
   margin-right: 80px;
-  margin-top: 15px;
   padding: 0;
 
   li:nth-child(2) {
@@ -201,7 +200,7 @@ const FormGoogleLogoStyled = styled(GoogleIcon)`
 `;
 
 const FormDivPolicyStyled = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
 `;
 
 const PolicyStyled = styled.a`
