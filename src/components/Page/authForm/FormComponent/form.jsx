@@ -6,9 +6,10 @@ import validateForm from '../utils/validateForm';
 import getErrorMessage from '../utils/getErrorMessage';
 import validPassword from '../utils/validPassword';
 
-import InputComponents from './InputComponents';
 import usePasswordForm from '../../../Hooks/usePasswordForm';
 import useAllInput from '../../../Hooks/useAllInput';
+
+import InputComponents from './InputComponents';
 
 import { 
   INPUT_PROPS,
