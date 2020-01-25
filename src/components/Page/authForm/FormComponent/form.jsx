@@ -34,6 +34,7 @@ import {
 const Form = () => {
 
   const {
+    passValues,
     passErrors,
     handleChangePass
   } = usePasswordForm(validPassword);
@@ -47,21 +48,19 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form Valid!!!!!')
+    console.log('Form Valid!!!!!', values)
 
     setValues({
       ...values,
+      errorCount: countErrors(values.errors),
       formValid: validateForm(values.errors)
     });
-    setValues({
-      ...values,
-      errorCount: countErrors(values.errors)
-    });
   }
-  
+
   useEffect(() => {
     setValues({
       ...values,
+      ...passValues,
       errorCount: countErrors(values.errors),
       errorCountPassword: countErrors(passErrors.password),
     });
