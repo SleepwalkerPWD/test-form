@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { isEmpty } from 'lodash';
 
 import countErrors from '../utils/countErrors';
@@ -8,11 +8,10 @@ import validPassword from '../utils/validPassword';
 
 import InputComponents from './InputComponents';
 import usePasswordForm from '../../../Hooks/usePasswordForm';
+import useAllInput from '../../../Hooks/useAllInput';
 
 import { 
   INPUT_PROPS,
-  INITIAL_VALUES,
-  VALID_EMAIL_REGEXP
  } from '../constants';
 
 import { 
@@ -33,50 +32,18 @@ import {
 } from './styled'
 
 const Form = () => {
-  const [values, setValues] = useState(INITIAL_VALUES);
 
   const {
     passErrors,
     handleChangePass
   } = usePasswordForm(validPassword);
 
-  const handleUserInput = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    let errors = values.errors;
+  const {
+    handleUserInput,
+    values,
+    setValues
+  } = useAllInput();
 
-    switch (name) {
-      case 'userName': 
-        errors.userName = 
-          value.length < 5
-            ? 'Name at least 5 symbols'
-            : '';
-        break;
-      case 'country':
-        errors.country = 
-          !value.length
-            ? 'Choose country'
-            : '';
-        break;
-      case 'email': 
-        errors.email = 
-        VALID_EMAIL_REGEXP.test(value)
-            ? ''
-            : 'Invalid email';
-        break;
-      default:
-        break;
-    }
-
-    setValues({
-      ...values,
-      formValid: validateForm(values.errors),
-      errors,
-      errorCount: countErrors(values.errors),
-      errorCountPassword: countErrors(passErrors.password),
-      [name]: value
-    });
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -91,7 +58,7 @@ const Form = () => {
       errorCount: countErrors(values.errors)
     });
   }
-
+  
   useEffect(() => {
     setValues({
       ...values,
