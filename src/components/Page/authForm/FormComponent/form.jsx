@@ -102,26 +102,26 @@ const Form = () => {
           ))}
           <PasswordRulesListStyled>
             <PasswordRulesListItemStyled 
-              success={passErrors.password.lowercase}
-              error={passErrors.password.lowercase === ''}
+              error={passErrors.password.lowercase}
+              empty={passErrors.password.lowercase === ''}
             >
               One lowercase character
             </PasswordRulesListItemStyled>
             <PasswordRulesListItemStyled 
-              success={passErrors.password.number}
-              error={passErrors.password.number === ''}
+              error={passErrors.password.number}
+              empty={passErrors.password.number === ''}
             >
               One number
             </PasswordRulesListItemStyled>
             <PasswordRulesListItemStyled 
-              success={passErrors.password.uppercase} 
-              error={passErrors.password.uppercase === ''}
+              error={passErrors.password.uppercase} 
+              empty={passErrors.password.uppercase === ''}
             >
               One Uppercase character
             </PasswordRulesListItemStyled>
             <PasswordRulesListItemStyled 
-              success={passErrors.password.eight}
-              error={passErrors.password.eight === ''}
+              error={passErrors.password.eight}
+              empty={passErrors.password.eight === ''}
             >
               At least 8 symbols
             </PasswordRulesListItemStyled>
