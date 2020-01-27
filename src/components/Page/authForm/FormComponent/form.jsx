@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { isEmpty } from 'lodash';
+import { useDispatch } from 'react-redux';
+import { valuesToServer } from '../../../../store/actions/valuesToServer';
 
 import countErrors from '../utils/countErrors';
 import validateForm from '../utils/validateForm';
@@ -33,6 +35,7 @@ import {
 } from './styled'
 
 const Form = () => {
+  const dispatch = useDispatch()
 
   const {
     passValues,
@@ -43,13 +46,20 @@ const Form = () => {
   const {
     handleUserInput,
     values,
-    setValues
+    setValues,
+    inputValidToServer
   } = useAllInput();
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form Valid!!!!!', values)
+    
+    dispatch(
+      valuesToServer({
+        ...inputValidToServer,
+        ...passValues
+      })
+    )
 
     setValues({
       ...values,
@@ -61,7 +71,6 @@ const Form = () => {
   useEffect(() => {
     setValues({
       ...values,
-      ...passValues,
       errorCount: countErrors(values.errors),
       errorCountPassword: countErrors(passErrors.password),
     });

@@ -9,9 +9,9 @@ import countErrors from '../Page/authForm/utils/countErrors';
 import validateForm from '../Page/authForm/utils/validateForm';
 
 const useAllInput = () => {
-
 const [values, setValues] = useState(INITIAL_VALUES);
-  
+const [inputValidToServer, setInputValidToServer] = useState({});
+
 const handleUserInput = (event) => {
   event.preventDefault();
   const { name, value } = event.target;
@@ -45,14 +45,19 @@ const handleUserInput = (event) => {
     formValid: validateForm(values.errors),
     errors,
     errorCount: countErrors(values.errors),
-    [name]: value
   });
+
+  setInputValidToServer ({
+    ...inputValidToServer,
+    [name]: value
+  })
 }
 
   return {
     handleUserInput,
     values,
-    setValues
+    setValues,
+    inputValidToServer
   }
 };
 
