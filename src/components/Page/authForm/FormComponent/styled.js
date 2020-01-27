@@ -141,6 +141,7 @@ const FormButtonStyled = styled.button`
   color: ${prop => (prop.valid ? '#FFFFFF' : '#CCD4D6')};
   margin-top: 20px;
   outline: none;
+  pointer-events: ${prop => (prop.pointerEvents ? 'auto' : 'none')};
 
   &:hover {
     background-color: ${prop => (prop.valid && '#09A2C3')};

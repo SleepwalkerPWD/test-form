@@ -53,7 +53,7 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     dispatch(
       valuesToServer({
         ...inputValidToServer,
@@ -129,7 +129,7 @@ const Form = () => {
           <FormButtonStyled 
             type='submit'
             valid={values.formValid && isEmpty(passErrors.password)}
-            disabled={!values.formValid}
+            pointerEvents={values.formValid && isEmpty(passErrors.password)}
           >
             Create Account
           </FormButtonStyled>
