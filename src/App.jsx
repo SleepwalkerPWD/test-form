@@ -1,19 +1,19 @@
-import React from 'react';
-import AuthForm from './components/Page/authForm';
-import { Provider } from 'react-redux';
+import React from 'react'
+import AuthForm from './pages/Form'
+import { Provider } from 'react-redux'
 
-import configurateStore from './store/configurateStore';
+import configurateStore from './store/configurateStore'
 
-const { store } = configurateStore();
+const { store } = configurateStore()
 
 function App() {
   return (
     <>
-      <Provider store={store} >
+      <Provider store={store}>
         <AuthForm />
       </Provider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -12,12 +12,26 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier",
+    "react-hooks"
   ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "comma-dangle": 0,
-    "no-useless-escape": 2
+    "no-useless-escape": 2,
+    "max-len": [0, 120, 2, { "ignoreUrls": true }],
+    "react/display-name": "off",
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/prefer-default-export": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-named-as-default": 0,
+    "react/require-default-props": 0,
+    "react-redux/useSelector-prefer-selectors": 0,
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+    "no-continue": 0
   },
   "settings": {
     "react": {
@@ -25,5 +39,6 @@
       "version": "15.4.2"
     }
   },
-  "parser": "babel-eslint",
+
+  "parser": "babel-eslint"
 }

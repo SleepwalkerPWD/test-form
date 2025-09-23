@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import valuesToServer from './valuesToServer';
+import valuesToServer from './valuesToServer'
 
 const rootReducer = combineReducers({
-  valuesToServer
-});
+  valuesToServer,
+})
 
-export default rootReducer;
+export default rootReducer
