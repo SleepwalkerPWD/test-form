@@ -20,8 +20,8 @@ const SelectCountryInput = props => {
         <InputOptionStyled value="" hidden disabled selected>
           {text}
         </InputOptionStyled>
-        {COUNTRY_ARR.map((country, index) => (
-          <InputOptionStyled key={index} value={country}>
+        {COUNTRY_ARR.map(country => (
+          <InputOptionStyled key={country} value={country}>
             {country}
           </InputOptionStyled>
         ))}

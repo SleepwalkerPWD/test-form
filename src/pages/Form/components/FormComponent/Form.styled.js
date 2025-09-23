@@ -10,10 +10,10 @@ import {
   ErrorIcon,
   EyeClosedIcon,
   DoneGrayIcon,
-} from '../../../icons/'
-import CircleIcon from '../../../images/icons/PasswordValidation/CircleIcon.svg'
-import CheckIcon from '../../../images/icons/PasswordValidation/CheckIcon.svg'
-import FailIcon from '../../../images/icons/PasswordValidation/FailIcon.svg'
+} from '../../icons/'
+import CircleIcon from '../../images/icons/PasswordValidation/CircleIcon.svg'
+import CheckIcon from '../../images/icons/PasswordValidation/CheckIcon.svg'
+import FailIcon from '../../images/icons/PasswordValidation/FailIcon.svg'
 
 const complexMixinError = css`
   color: ${prop => (prop.error ? '#F43015' : '#0AD65C')};
@@ -138,16 +138,16 @@ const FormButtonStyled = styled.button`
   height: 50px;
   width: 100%;
   border: none;
-  background-color: ${prop => (prop.valid ? '#05596B' : '#E6EEF0')};
+  background-color: ${prop => (prop.isValid ? '#05596B' : '#E6EEF0')};
   border-radius: 4px;
-  cursor: ${prop => (prop.valid ? 'pointer' : 'auto')};
-  color: ${prop => (prop.valid ? '#FFFFFF' : '#CCD4D6')};
+  cursor: ${prop => (prop.isValid ? 'pointer' : 'auto')};
+  color: ${prop => (prop.isValid ? '#FFFFFF' : '#CCD4D6')};
   margin-top: 20px;
   outline: none;
-  pointer-events: ${prop => (prop.pointerEvents ? 'auto' : 'none')};
+  pointer-events: ${prop => (prop.pointerEvent ? 'auto' : 'none')};
 
   &:hover {
-    background-color: ${prop => prop.valid && '#09A2C3'};
+    background-color: ${prop => prop.isValid && '#09A2C3'};
   }
 `
 

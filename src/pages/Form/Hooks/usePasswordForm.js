@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
-import { INITIAL_PASS_ERRORS } from '../Form/constants/inititalPassErrors'
+import { INITIAL_PASS_ERRORS } from '../../Form/constants/inititalPassErrors'
 
+// Отлов ошибок в пароле
 const usePasswordForm = validate => {
   const [passValues, setPassValues] = useState({})
   const [passErrors, setPassErrors] = useState(INITIAL_PASS_ERRORS)

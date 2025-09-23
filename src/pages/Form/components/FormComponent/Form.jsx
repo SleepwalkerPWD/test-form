@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { isEmpty } from 'lodash'
 import { useDispatch } from 'react-redux'
 
@@ -7,11 +7,10 @@ import countErrors from '../../utils/countErrors'
 import validateForm from '../../utils/validateForm'
 import getErrorMessage from '../../utils/getErrorMessage'
 import validPassword from '../../utils/validPassword'
-import usePasswordForm from '../../../Hooks/usePasswordForm'
-import useAllInput from '../../../Hooks/useAllInput'
+import usePasswordForm from '../../Hooks/usePasswordForm'
+import useAllInput from '../../Hooks/useAllInput'
 import InputComponents from './components/InputComponents'
 import { INPUT_PROPS } from '../../constants'
-
 import {
   FormWrapper,
   FormValue,
@@ -29,6 +28,7 @@ import {
   FormFooterStyled,
 } from './Form.styled'
 
+// Кастомная форма
 const Form = () => {
   const dispatch = useDispatch()
 
@@ -68,6 +68,10 @@ const Form = () => {
     })
   }, [passErrors.password])
 
+  const isValid = useMemo(() => {
+    return values.formValid && isEmpty(passErrors.password)
+  }, [values.formValid, passErrors.password])
+
   return (
     <FormBackgroundWrapper>
       <FormWrapper>
@@ -75,6 +79,7 @@ const Form = () => {
           {INPUT_PROPS.map(input => (
             <InputComponents
               values={values}
+              inputValidToServer={inputValidToServer}
               key={input.id}
               title={input.title}
               icon={input.icon}
@@ -120,8 +125,8 @@ const Form = () => {
           </PasswordRulesListStyled>
           <FormButtonStyled
             type="submit"
-            valid={values.formValid && isEmpty(passErrors.password)}
-            pointerEvents={values.formValid && isEmpty(passErrors.password)}
+            isValid={isValid}
+            pointerEvent={isValid}
           >
             Create Account
           </FormButtonStyled>

@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import { INITIAL_VALUES, VALID_EMAIL_REGEXP } from '../Form/constants'
+import { INITIAL_VALUES, VALID_EMAIL_REGEXP } from '../../Form/constants'
 
-import countErrors from '../Form/utils/countErrors'
-import validateForm from '../Form/utils/validateForm'
+import countErrors from '../../Form/utils/countErrors'
+import validateForm from '../../Form/utils/validateForm'
 
+// Values и валидация
 const useAllInput = () => {
   const [values, setValues] = useState(INITIAL_VALUES)
   const [inputValidToServer, setInputValidToServer] = useState({})

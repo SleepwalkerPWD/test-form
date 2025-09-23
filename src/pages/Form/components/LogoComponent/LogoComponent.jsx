@@ -1,5 +1,5 @@
 import React from 'react'
-import LogoIcon from '../../../icons/LogoIcon'
+import LogoIcon from '../../icons/LogoIcon'
 
 import {
   BackgroundStyled,

@@ -122,7 +122,6 @@ InputComponents.propTypes = {
   titleFor: PropTypes.string,
   handleUserInput: PropTypes.func,
   name: PropTypes.string,
-
   values: PropTypes.object,
   objectErrorKey: PropTypes.string,
   errorMessage: PropTypes.string,
