@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash'
 
 import {
   InputStyled,
   TitleFormStyled,
   PasswordEyeIconStyledWrapper,
-} from './styled';
+} from './styled'
 
 const PasswordInput = ({
   title,
@@ -21,18 +21,18 @@ const PasswordInput = ({
   name,
   handleChangePass,
   passErrors,
-  passErrorObj
+  passErrorObj,
 }) => {
-  const [isPasswordShow, setIsPasswordShow] = useState(false);
+  const [isPasswordShow, setIsPasswordShow] = useState(false)
 
   const handlePasswordVisible = () => {
-    setIsPasswordShow(!isPasswordShow);
+    setIsPasswordShow(!isPasswordShow)
   }
-  
+
   return (
     <>
       <TitleFormStyled htmlFor={titleFor}>{title}</TitleFormStyled>
-      <InputStyled 
+      <InputStyled
         type={isPasswordShow ? 'text' : `${type}`}
         placeholder={text}
         onChange={handleChangePass}
@@ -43,17 +43,13 @@ const PasswordInput = ({
       <PasswordEyeIconStyledWrapper onClick={handlePasswordVisible}>
         {isPasswordShow ? <EyeOpenIcon /> : <Icon />}
       </PasswordEyeIconStyledWrapper>
-      {isEmpty(passErrorObj)  ? (
-          <SuccessIcon />
-        ):(
-          (passErrors ? (
-              <ErrorIcon />
-            ) : (
-              <DoneGrayIcon />
-            )
-          )
-        )
-      }
+      {isEmpty(passErrorObj) ? (
+        <SuccessIcon />
+      ) : passErrors ? (
+        <ErrorIcon />
+      ) : (
+        <DoneGrayIcon />
+      )}
     </>
   )
 }
@@ -73,7 +69,7 @@ PasswordInput.propTypes = {
   values: PropTypes.object,
   handleChangePass: PropTypes.func,
   passErrors: PropTypes.any,
-  passErrorObj: PropTypes.object
-};
+  passErrorObj: PropTypes.object,
+}
 
 export default PasswordInput

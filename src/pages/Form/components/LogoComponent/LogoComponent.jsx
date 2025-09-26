@@ -1,5 +1,4 @@
 import React from 'react'
-import LogoIcon from '../../icons/LogoIcon'
 
 import {
   BackgroundStyled,
@@ -14,7 +13,6 @@ import {
 const LogoComponent = () => {
   return (
     <LogoBackgroundWrapper>
-      <LogoIcon />
       <BackgroundStyled />
       <HeadingStyled>Create account</HeadingStyled>
       <SectionTextStyled>
