@@ -1,12 +1,11 @@
 import React, { memo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
-
 import {
   InputStyled,
-  TitleFormStyled,
   PasswordEyeIconStyledWrapper,
-} from './styles'
+  TitleFormStyled,
+} from '../../InputComponents.styles'
 
 const PasswordInput = memo(props => {
   const {

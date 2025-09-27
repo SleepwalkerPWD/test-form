@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { InputStyled, TitleFormStyled } from './styles'
+import { InputStyled, TitleFormStyled } from '../../InputComponents.styles'
 
 const UserNameEmailInput = memo(props => {
   const {

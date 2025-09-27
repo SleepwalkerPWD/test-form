@@ -10,14 +10,8 @@ import validPassword from '../../utils/validPassword'
 import usePasswordForm from './../../Hooks/usePasswordForm'
 import useAllInput from '../../Hooks/useAllInput'
 import { INPUT_PROPS } from '../../constants'
-import InputComponents from './components/InputComponents'
-import {
-  Buttons,
-  CommonPassFormRules,
-  Footer,
-  PasswordRulesListStyled,
-  Policy,
-} from './components'
+import { Buttons, Footer, Policy } from './components'
+import InputComponents from './components/InputComponents/InputComponents'
 
 import * as S from './Form.styles'
 
@@ -90,28 +84,6 @@ const Form = () => {
               passErrorObj={passErrors.password}
             />
           ))}
-          <PasswordRulesListStyled>
-            <CommonPassFormRules
-              title="One lowercase character"
-              error={passErrors.password.lowercase}
-              empty={passErrors.password.lowercase === ''}
-            />
-            <CommonPassFormRules
-              title="One number"
-              error={passErrors.password.number}
-              empty={passErrors.password.number === ''}
-            />
-            <CommonPassFormRules
-              title="One Uppercase character"
-              error={passErrors.password.uppercase}
-              empty={passErrors.password.uppercase === ''}
-            />
-            <CommonPassFormRules
-              title="At least 8 symbols"
-              error={passErrors.password.eight}
-              empty={passErrors.password.eight === ''}
-            />
-          </PasswordRulesListStyled>
           <Buttons isValid={isValid} />
           <Policy />
         </S.FormValue>

@@ -10,6 +10,13 @@ import {
   DoneGrayIconStyled,
 } from '../components/FormComponent/Form.styles'
 
+const TITLE_NAME = {
+  name: 'Name',
+  email: 'Email',
+  country: 'Country',
+  password: 'Password',
+}
+
 const UserNameInput = {
   id: 1,
   title: 'Name',
@@ -62,4 +69,4 @@ const PasswordInput = {
 
 const INPUT_PROPS = [UserNameInput, EmailInput, SelectInput, PasswordInput]
 
-export { INPUT_PROPS }
+export { INPUT_PROPS, TITLE_NAME }

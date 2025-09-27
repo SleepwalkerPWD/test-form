@@ -27,7 +27,7 @@ const Buttons = memo(props => {
 })
 
 Buttons.propTypes = {
-  isValid: PropTypes.boolean,
+  isValid: PropTypes.bool,
 }
 
 export default Buttons

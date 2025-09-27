@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import PasswordInput from './PasswordInput'
-import SelectCountryInput from './SelectCountryInput'
-import UserNameEmailInput from './UserNameEmailInput'
+import { TITLE_NAME } from '../../../../constants/inputForm'
 
-import { InputWrapperStyled, InputErrorStyled } from './styles'
+import { PasswordRulesListStyled } from '../CommonPassFormRules/CommonPassFormRules.styles'
+import CommonPassFormRules from '../CommonPassFormRules/CommonPassFormRules'
+import PasswordInput from './components/PasswordInput/PasswordInput'
+import SelectCountryInput from './components/SelectCountryInput/SelectCountryInput'
+import UserNameEmailInput from './components/UserNameEmailInput/UserNameEmailInput'
+import { InputErrorStyled, InputWrapperStyled } from './InputComponents.styles'
 
 const InputComponents = props => {
   const {
@@ -25,9 +28,10 @@ const InputComponents = props => {
     handleChangePass,
     passErrorObj,
   } = props
+
   return (
     <>
-      {title === 'Name' && (
+      {title === TITLE_NAME.name && (
         <InputWrapperStyled>
           <UserNameEmailInput
             title={title}
@@ -47,7 +51,7 @@ const InputComponents = props => {
           )}
         </InputWrapperStyled>
       )}
-      {title === 'Email' && (
+      {title === TITLE_NAME.email && (
         <InputWrapperStyled>
           <UserNameEmailInput
             title={title}
@@ -67,7 +71,7 @@ const InputComponents = props => {
           )}
         </InputWrapperStyled>
       )}
-      {title === 'Country' && (
+      {title === TITLE_NAME.country && (
         <InputWrapperStyled>
           <SelectCountryInput
             title={title}
@@ -82,28 +86,52 @@ const InputComponents = props => {
           )}
         </InputWrapperStyled>
       )}
-      {title === 'Password' && (
-        <InputWrapperStyled>
-          <PasswordInput
-            title={title}
-            icon={Icon}
-            successIcon={SuccessIcon}
-            errorIcon={ErrorIcon}
-            eyeOpenIcon={EyeOpenIcon}
-            doneGrayIcon={DoneGrayIcon}
-            text={text}
-            type={type}
-            titleFor={titleFor}
-            name={name}
-            errorMessage={errorMessage}
-            handleChangePass={handleChangePass}
-            passErrors={values.errorCountPassword}
-            passErrorObj={passErrorObj}
-          />
-          {values.errorCount > 0 && (
-            <InputErrorStyled>{errorMessage}</InputErrorStyled>
-          )}
-        </InputWrapperStyled>
+      {title === TITLE_NAME.password && (
+        <>
+          <InputWrapperStyled>
+            <PasswordInput
+              title={title}
+              icon={Icon}
+              successIcon={SuccessIcon}
+              errorIcon={ErrorIcon}
+              eyeOpenIcon={EyeOpenIcon}
+              doneGrayIcon={DoneGrayIcon}
+              text={text}
+              type={type}
+              titleFor={titleFor}
+              name={name}
+              errorMessage={errorMessage}
+              handleChangePass={handleChangePass}
+              passErrors={values.errorCountPassword}
+              passErrorObj={passErrorObj}
+            />
+            {values.errorCount > 0 && (
+              <InputErrorStyled>{errorMessage}</InputErrorStyled>
+            )}
+          </InputWrapperStyled>
+          <PasswordRulesListStyled>
+            <CommonPassFormRules
+              title="One lowercase character"
+              error={passErrorObj.lowercase}
+              empty={passErrorObj.lowercase === ''}
+            />
+            <CommonPassFormRules
+              title="One number"
+              error={passErrorObj.number}
+              empty={passErrorObj.number === ''}
+            />
+            <CommonPassFormRules
+              title="One Uppercase character"
+              error={passErrorObj.uppercase}
+              empty={passErrorObj.uppercase === ''}
+            />
+            <CommonPassFormRules
+              title="At least 8 symbols"
+              error={passErrorObj.eight}
+              empty={passErrorObj.eight === ''}
+            />
+          </PasswordRulesListStyled>
+        </>
       )}
     </>
   )

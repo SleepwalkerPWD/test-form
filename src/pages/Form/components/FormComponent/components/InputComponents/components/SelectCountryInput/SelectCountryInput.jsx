@@ -1,9 +1,12 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { COUNTRY_ARR } from '../../../../constants'
-
-import { TitleFormStyled, InputSelectStyled, InputOptionStyled } from './styles'
+import {
+  InputOptionStyled,
+  InputSelectStyled,
+  TitleFormStyled,
+} from '../../InputComponents.styles'
+import { COUNTRY_ARR } from '../../../../../../constants'
 
 const SelectCountryInput = memo(props => {
   const { title, text, titleFor, handleUserInput, name, errorMessage } = props
