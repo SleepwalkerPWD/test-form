@@ -14,9 +14,10 @@
   "plugins": [
     "react",
     "prettier",
-    "react-hooks"
+    "react-hooks",
+    "import"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "rules": {
     "comma-dangle": 0,
     "no-useless-escape": 2,

@@ -8,7 +8,7 @@ import {
   DoneIconStyled,
   ErrorIconStyled,
   DoneGrayIconStyled,
-} from '../components/FormComponent/Form.styled'
+} from '../components/FormComponent/Form.styles'
 
 const UserNameInput = {
   id: 1,

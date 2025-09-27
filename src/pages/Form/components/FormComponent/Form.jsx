@@ -7,26 +7,19 @@ import countErrors from '../../utils/countErrors'
 import validateForm from '../../utils/validateForm'
 import getErrorMessage from '../../utils/getErrorMessage'
 import validPassword from '../../utils/validPassword'
-import usePasswordForm from '../../Hooks/usePasswordForm'
+import usePasswordForm from './../../Hooks/usePasswordForm'
 import useAllInput from '../../Hooks/useAllInput'
-import InputComponents from './components/InputComponents'
 import { INPUT_PROPS } from '../../constants'
+import InputComponents from './components/InputComponents'
 import {
-  FormWrapper,
-  FormValue,
+  Buttons,
+  CommonPassFormRules,
+  Footer,
   PasswordRulesListStyled,
-  PasswordRulesListItemStyled,
-  FormButtonStyled,
-  FormButtonGoogleStyled,
-  FormWrapperGoogleButtonStyled,
-  FormGoogleLogoStyled,
-  FormDivPolicyStyled,
-  PolicyStyled,
-  FormLineStyled,
-  FormOrStyled,
-  FormBackgroundWrapper,
-  FormFooterStyled,
-} from './Form.styled'
+  Policy,
+} from './components'
+
+import * as S from './Form.styles'
 
 // Кастомная форма
 const Form = () => {
@@ -73,9 +66,9 @@ const Form = () => {
   }, [values.formValid, passErrors.password])
 
   return (
-    <FormBackgroundWrapper>
-      <FormWrapper>
-        <FormValue onSubmit={handleSubmit}>
+    <S.FormBackgroundWrapper>
+      <S.FormWrapper>
+        <S.FormValue onSubmit={handleSubmit}>
           {INPUT_PROPS.map(input => (
             <InputComponents
               values={values}
@@ -98,59 +91,33 @@ const Form = () => {
             />
           ))}
           <PasswordRulesListStyled>
-            <PasswordRulesListItemStyled
+            <CommonPassFormRules
+              title="One lowercase character"
               error={passErrors.password.lowercase}
               empty={passErrors.password.lowercase === ''}
-            >
-              One lowercase character
-            </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled
+            />
+            <CommonPassFormRules
+              title="One number"
               error={passErrors.password.number}
               empty={passErrors.password.number === ''}
-            >
-              One number
-            </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled
+            />
+            <CommonPassFormRules
+              title="One Uppercase character"
               error={passErrors.password.uppercase}
               empty={passErrors.password.uppercase === ''}
-            >
-              One Uppercase character
-            </PasswordRulesListItemStyled>
-            <PasswordRulesListItemStyled
+            />
+            <CommonPassFormRules
+              title="At least 8 symbols"
               error={passErrors.password.eight}
               empty={passErrors.password.eight === ''}
-            >
-              At least 8 symbols
-            </PasswordRulesListItemStyled>
+            />
           </PasswordRulesListStyled>
-          <FormButtonStyled
-            type="submit"
-            isValid={isValid}
-            pointerEvent={isValid}
-          >
-            Create Account
-          </FormButtonStyled>
-          <FormLineStyled>
-            <FormOrStyled>or</FormOrStyled>
-          </FormLineStyled>
-          <FormWrapperGoogleButtonStyled>
-            <FormButtonGoogleStyled>Sign up with Google</FormButtonGoogleStyled>
-            <FormGoogleLogoStyled />
-          </FormWrapperGoogleButtonStyled>
-          <FormDivPolicyStyled>
-            By continuing, you’re agreeing to our{' '}
-            <PolicyStyled>Terms of Service</PolicyStyled>,
-            <PolicyStyled> Privacy Policy</PolicyStyled> and{' '}
-            <PolicyStyled>Cookie Policy</PolicyStyled>
-          </FormDivPolicyStyled>
-        </FormValue>
-      </FormWrapper>
-      <FormFooterStyled>
-        <PolicyStyled>Cookie Policy</PolicyStyled>,
-        <PolicyStyled> Privacy Policy</PolicyStyled> and
-        <PolicyStyled> Terms of Service</PolicyStyled>.
-      </FormFooterStyled>
-    </FormBackgroundWrapper>
+          <Buttons isValid={isValid} />
+          <Policy />
+        </S.FormValue>
+      </S.FormWrapper>
+      <Footer />
+    </S.FormBackgroundWrapper>
   )
 }
 
