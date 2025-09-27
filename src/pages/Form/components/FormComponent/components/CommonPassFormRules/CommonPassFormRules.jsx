@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
 import * as S from './CommonPassFormRules.styles'
 
-const CommonPassFormRules = props => {
+const CommonPassFormRules = memo(props => {
   const { title, error, empty } = props
 
   return (
@@ -11,7 +11,7 @@ const CommonPassFormRules = props => {
       {title}
     </S.PasswordRulesListItemStyled>
   )
-}
+})
 
 CommonPassFormRules.propTypes = {
   title: PropTypes.string,

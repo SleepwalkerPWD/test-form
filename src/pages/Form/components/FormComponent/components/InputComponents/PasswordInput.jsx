@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
@@ -6,23 +6,24 @@ import {
   InputStyled,
   TitleFormStyled,
   PasswordEyeIconStyledWrapper,
-} from './styled'
+} from './styles'
 
-const PasswordInput = ({
-  title,
-  icon: Icon,
-  successIcon: SuccessIcon,
-  errorIcon: ErrorIcon,
-  eyeOpenIcon: EyeOpenIcon,
-  doneGrayIcon: DoneGrayIcon,
-  text,
-  type,
-  titleFor,
-  name,
-  handleChangePass,
-  passErrors,
-  passErrorObj,
-}) => {
+const PasswordInput = memo(props => {
+  const {
+    title,
+    icon: Icon,
+    successIcon: SuccessIcon,
+    errorIcon: ErrorIcon,
+    eyeOpenIcon: EyeOpenIcon,
+    doneGrayIcon: DoneGrayIcon,
+    text,
+    type,
+    titleFor,
+    name,
+    handleChangePass,
+    passErrors,
+    passErrorObj,
+  } = props
   const [isPasswordShow, setIsPasswordShow] = useState(false)
 
   const handlePasswordVisible = () => {
@@ -35,7 +36,7 @@ const PasswordInput = ({
       <InputStyled
         type={isPasswordShow ? 'text' : `${type}`}
         placeholder={text}
-        onChange={handleChangePass}
+        onChange={event => handleChangePass(event)}
         name={name}
         success={isEmpty(passErrorObj)}
         error={passErrors}
@@ -52,7 +53,7 @@ const PasswordInput = ({
       )}
     </>
   )
-}
+})
 
 PasswordInput.propTypes = {
   title: PropTypes.string,
@@ -64,7 +65,6 @@ PasswordInput.propTypes = {
   text: PropTypes.string,
   type: PropTypes.any,
   titleFor: PropTypes.string,
-  handleUserInput: PropTypes.func,
   name: PropTypes.string,
   values: PropTypes.object,
   handleChangePass: PropTypes.func,

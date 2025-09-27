@@ -5,7 +5,7 @@ import PasswordInput from './PasswordInput'
 import SelectCountryInput from './SelectCountryInput'
 import UserNameEmailInput from './UserNameEmailInput'
 
-import { InputWrapperStyled, InputErrorStyled } from './styled'
+import { InputWrapperStyled, InputErrorStyled } from './styles'
 
 const InputComponents = props => {
   const {
@@ -95,7 +95,6 @@ const InputComponents = props => {
             type={type}
             titleFor={titleFor}
             name={name}
-            handleUserInput={handleUserInput}
             errorMessage={errorMessage}
             handleChangePass={handleChangePass}
             passErrors={values.errorCountPassword}

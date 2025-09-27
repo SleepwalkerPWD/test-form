@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { InputStyled, TitleFormStyled } from './styled'
+import { InputStyled, TitleFormStyled } from './styles'
 
-const UserNameEmailInput = props => {
+const UserNameEmailInput = memo(props => {
   const {
     title,
     icon: Icon,
@@ -22,7 +22,7 @@ const UserNameEmailInput = props => {
       <InputStyled
         type={type}
         placeholder={text}
-        onChange={handleUserInput}
+        onChange={event => handleUserInput(event)}
         name={name}
         success={!errorMessage}
         error={errorMessage !== ' '}
@@ -36,7 +36,7 @@ const UserNameEmailInput = props => {
       )}
     </>
   )
-}
+})
 
 UserNameEmailInput.propTypes = {
   title: PropTypes.string,

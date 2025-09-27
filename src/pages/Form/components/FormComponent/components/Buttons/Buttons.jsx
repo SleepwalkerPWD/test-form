@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
 import * as S from './Buttons.styles'
 
 // Кнопки
-const Buttons = props => {
+const Buttons = memo(props => {
   const { isValid } = props
   return (
     <>
@@ -24,7 +24,7 @@ const Buttons = props => {
       </S.FormWrapperGoogleButtonStyled>
     </>
   )
-}
+})
 
 Buttons.propTypes = {
   isValid: PropTypes.boolean,

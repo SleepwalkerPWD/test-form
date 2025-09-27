@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { PolicyStyled } from '../../Form.styles'
 import * as S from './Footer.styles'
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <S.FormFooterStyled>
       <PolicyStyled>Cookie Policy</PolicyStyled>,
@@ -11,6 +11,6 @@ const Footer = () => {
       <PolicyStyled> Terms of Service</PolicyStyled>.
     </S.FormFooterStyled>
   )
-}
+})
 
 export default Footer
