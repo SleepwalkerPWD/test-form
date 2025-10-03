@@ -1,10 +1,11 @@
-import { createStore, applyMiddleware } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 
-import rootReducer from './reducers'
+import { formReducer } from './reducers'
 
-export default () => {
-  const store = createStore(rootReducer, applyMiddleware(logger))
-
-  return { store }
-}
+export const store = configureStore({
+  reducer: {
+    form: formReducer,
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+})

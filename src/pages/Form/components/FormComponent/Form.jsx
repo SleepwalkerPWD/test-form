@@ -1,8 +1,7 @@
 import React, { useMemo, useEffect } from 'react'
 import { isEmpty } from 'lodash'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { valuesToServer } from '../../../../store/actions/valuesToServer'
 import countErrors from '../../utils/countErrors'
 import validateForm from '../../utils/validateForm'
 import getErrorMessage from '../../utils/getErrorMessage'
@@ -12,12 +11,14 @@ import useAllInput from '../../Hooks/useAllInput'
 import { INPUT_PROPS } from '../../constants'
 import { Buttons, Footer, Policy } from './components'
 import InputComponents from './components/InputComponents/InputComponents'
+import { valuesToServer } from '../../../../store/reducers/form.slice'
 
 import * as S from './Form.styles'
 
 // Кастомная форма
 const Form = () => {
   const dispatch = useDispatch()
+  const form = useSelector(state => state.form)
 
   const { passValues, passErrors, handleChangePass } = usePasswordForm(
     validPassword
@@ -59,6 +60,14 @@ const Form = () => {
     return values.formValid && isEmpty(passErrors.password)
   }, [values.formValid, passErrors.password])
 
+  const sendedForm = useMemo(
+    () =>
+      Object.entries(form.valuesToServer).map(
+        ([key, item]) => `${key}: ${item}`
+      ),
+    [form]
+  )
+
   return (
     <S.FormBackgroundWrapper>
       <S.FormWrapper>
@@ -85,9 +94,18 @@ const Form = () => {
             />
           ))}
           <Buttons isValid={isValid} />
+          {!!sendedForm.length && (
+            <S.SentWrapper>
+              <div>Sent Form:</div>
+              {sendedForm.map(item => (
+                <div key={item}>{item}</div>
+              ))}
+            </S.SentWrapper>
+          )}
           <Policy />
         </S.FormValue>
       </S.FormWrapper>
+
       <Footer />
     </S.FormBackgroundWrapper>
   )

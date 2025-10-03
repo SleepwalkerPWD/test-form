@@ -1,9 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { Provider } from 'react-redux'
 
-import configurateStore from './store/configurateStore'
-
-const { store } = configurateStore()
+import { store } from './store/configurateStore'
 
 const AuthFormLazy = lazy(() => import('./pages/Form'))
 

@@ -1,9 +1,3 @@
-import { combineReducers } from 'redux'
+import formReducer from './form.slice'
 
-import valuesToServer from './valuesToServer'
-
-const rootReducer = combineReducers({
-  valuesToServer,
-})
-
-export default rootReducer
+export { formReducer }

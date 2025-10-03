@@ -25,7 +25,6 @@ const FormWrapper = styled.div`
 
 const FormValue = styled.form`
   width: 413px;
-  height: 715px;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(2, 40, 49, 0.08),
     0px 0px 2px rgba(2, 40, 49, 0.1);
@@ -95,6 +94,11 @@ const PolicyStyled = styled.a`
   }
 `
 
+const SentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 export {
   FormWrapper,
   FormValue,
@@ -108,4 +112,5 @@ export {
   DoneGrayIconStyled,
   PolicyStyled,
   FormBackgroundWrapper,
+  SentWrapper,
 }
